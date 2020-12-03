@@ -65,6 +65,10 @@ extern unsigned int sysctl_sched_uclamp_util_max;
 extern unsigned int sysctl_sched_cfs_bandwidth_slice;
 #endif
 
+#ifdef CONFIG_CFS_BVT
+extern unsigned int sysctl_sched_bvt_place_epsilon;
+#endif
+
 #ifdef CONFIG_SCHED_AUTOGROUP
 extern unsigned int sysctl_sched_autogroup_enabled;
 #endif
