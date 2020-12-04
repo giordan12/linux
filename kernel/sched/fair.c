@@ -514,7 +514,7 @@ static inline void update_effective_vruntime(struct sched_entity *se)
 	tg = se->my_q->tg;
 	warp = tg->bvt_warp_ns;
 	
-	se->effective_bruntime = se->vruntime - warp;
+	se->effective_vruntime = se->vruntime - warp;
 	se->is_warped = warp ? 1 : 0;
 }
 #endif
@@ -878,7 +878,7 @@ static void update_curr(struct cfs_rq *cfs_rq)
 	curr->sum_exec_runtime += delta_exec;
 	schedstat_add(cfs_rq->exec_clock, delta_exec);
 
-	curr->vruntime += calc_delta_fair(delFta_exec, curr);
+	curr->vruntime += calc_delta_fair(delta_exec, curr);
 #ifdef CONFIG_CFS_BVT
 	update_effective_vruntime(curr);
 #endif
@@ -10121,7 +10121,7 @@ static void task_fork_fair(struct task_struct *p)
 		 * 'current' within the tree based on its new key value.
 		 */
 		swap(curr->vruntime, se->vruntime);
-#ifdef CONFIG_CFS
+#ifdef CONFIG_CFS_BVT
 		update_effective_vruntime(curr);
 		updated_effective_vruntime(se);
 #endif
