@@ -888,7 +888,6 @@ config CFS_BANDWIDTH
 
 config CFS_BVT
 	bool "Borrowed-Virtual Time Support for CFS"
-	depends on EXPERIMENTAL
 	depends on FAIR_GROUP_SCHED
 	default n
 	help

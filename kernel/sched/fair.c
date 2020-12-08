@@ -10123,7 +10123,7 @@ static void task_fork_fair(struct task_struct *p)
 		swap(curr->vruntime, se->vruntime);
 #ifdef CONFIG_CFS_BVT
 		update_effective_vruntime(curr);
-		updated_effective_vruntime(se);
+		update_effective_vruntime(se);
 #endif
 		resched_curr(rq);
 	}
